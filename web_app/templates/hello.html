@@ -1,11 +1,10 @@
-{% extends "layout.html" %}
+{% extends "bootstrap_layout.html" %}
+{% set active_page = "hello" %}
 
 {% block content %}
 
     <h1>{{ message }}</h1>
 
     <p>This is a paragraph on the "hello" page.</p>
-
-    <p>{{ other }}</p>
 
 {% endblock %}
