@@ -3,9 +3,8 @@
 import requests
 import json
 from pprint import pprint
-# from IPython.display import Image, display
+# from IPython.display import Image, display #isn't recongized- is this only a Collab thing
 from operator import itemgetter
-
 
 #headers = {"...": API_KEY}
 #response= requests.get(url, header=headers)
@@ -32,9 +31,9 @@ def get_recipes(type_of_meal, final_ingreds, minimum_calories, maximum_calories,
     url = f"https://api.spoonacular.com/recipes/complexSearch?query={type_of_meal}&includeIngredients={final_ingreds}&minCalories={minimum_calories}&maxCalories={maximum_calories}&maxReadyTime={max_ready_time}&addRecipeInformation=True&sort=popularity&number=5&apiKey={API_KEY}" # url with user input variables
     response = requests.get(url)
     recipe_search_data = json.loads(response.text)
-    # pprint(recipe_search_data)
     return recipe_search_data
 
+# need to change this hard coded variables to dynamic user inputs
 if __name__ == "__main__":
     recipe_search_data = get_recipes(type_of_meal="pasta",final_ingreds="pasta+salmon", minimum_calories="200", maximum_calories="1000", max_ready_time="60")
     recipe_results = [recipe for recipe in recipe_search_data["results"]]
@@ -45,7 +44,6 @@ if __name__ == "__main__":
         print("Calories:", round((recipe["nutrition"]["nutrients"][0]["amount"])))
         print("Servings:", recipe["servings"])
         print("See Detailed Recipe Info:", recipe["spoonacularSourceUrl"])
-        # display(Image(url=recipe["image"]))
-
+        # display(Image(url=recipe["image"])) # needs fixing: displays picture of meal
 
 
