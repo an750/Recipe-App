@@ -1,0 +1,35 @@
+{% extends "bootstrap_layout.html" %}
+{% set active_page = "recipe_form" %}
+
+{% block content %}
+
+<h2>Recipe Form</h2>
+
+<p>Request recipes given what's in your fridge...</p>
+
+<form action="/recipe" method="POST">
+
+    <label>Type of Meal</label>
+    <input type="text" name="type_of_meal" placeholder="" value="">
+    <br>
+
+    <label>Ingredients</label>
+    <input type="text" name="final_ingreds" placeholder="" value="">
+    <br>
+
+    <label>Min. Calories</label>
+    <input type="text" name="minimum_calories" placeholder="" value="">
+    <br>
+
+    <label>Max. Calories</label>
+    <input type="text" name="maximum_calories" placeholder="" value="">
+    <br>
+
+    <label>Prep Time</label>
+    <input type="text" name="max_ready_time" placeholder="" value="">
+    <br>
+
+    <button>Submit</button>
+</form>
+
+{% endblock %}
