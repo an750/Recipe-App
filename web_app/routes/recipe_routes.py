@@ -37,4 +37,5 @@ def index():
         return render_template("recipe.html", results=recipe_results)
     else:
         # flash("No Plates Found. Please try again!", "danger")
-        return jsonify({"message": "Please try again."}), 404
+        # return jsonify({"message": "Please try again."}), 404
+        return render_template("no_recipe.html")
