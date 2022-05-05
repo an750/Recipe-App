@@ -3,38 +3,40 @@
 
 {% block content %}
 
-<h2>Recipe Form</h2>
+<h2>Find a Recipe</h2>
 
-<p>Request recipes given what's in your fridge...</p>
+<p>In the mood for something in particular? Have a few ingredients you need to use?</p>
+<p>Enter your preferences below and we'll serve you up some tasty recipe options 
+    that will surely hit the spot :) </p>
 
 <form action="/recipe" method="POST">
 
-    <label>Type of Meal</label>
+    <b><label>What are you in the mood for?</label></b><br>
     <input type="text" name="type_of_meal" placeholder="" value="">
     <br>
     <br>
 
-    <label>Ingredients</label>
+    <b><label>Ingredients on Hand:</label><br></b>
     <input type="text" name="final_ingreds" placeholder="" value="">
     <br>
     <br>
 
-    <label>Min. Calories</label>
+    <b><label>Min. Calories:</label><br></b>
     <input type="text" name="minimum_calories" placeholder="" value="">
     <br>
     <br>
 
-    <label>Max. Calories</label>
+    <b><label>Max. Calories:</label><br></b>
     <input type="text" name="maximum_calories" placeholder="" value="">
     <br>
     <br>
 
-    <label>Prep Time</label>
+    <b><label>Prep. Time:</label><br></b>
     <input type="text" name="max_ready_time" placeholder="" value="">
     <br>
     <br>
 
-    <button>Submit</button>
+    <button>Go Find Me Recipes!</button>
 </form>
 
 {% endblock %}
