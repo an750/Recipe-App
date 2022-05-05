@@ -31,7 +31,8 @@ def get_recipes(type_of_meal, final_ingreds, minimum_calories, maximum_calories,
     url = f"https://api.spoonacular.com/recipes/complexSearch?query={type_of_meal}&includeIngredients={final_ingreds}&minCalories={minimum_calories}&maxCalories={maximum_calories}&maxReadyTime={max_ready_time}&addRecipeInformation=True&sort=popularity&number=5&apiKey={API_KEY}" # url with user input variables
     response = requests.get(url)
     recipe_search_data = json.loads(response.text)
-    return recipe_search_data
+    recipe_results = [recipe for recipe in recipe_search_data["results"]]
+    return recipe_results
 
 # need to change this hard coded variables to dynamic user inputs
 if __name__ == "__main__":
