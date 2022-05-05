@@ -48,5 +48,3 @@ if __name__ == "__main__":
         # display(Image(url=recipe["image"]))
 
 
-
-
