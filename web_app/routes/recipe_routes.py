@@ -25,11 +25,11 @@ def index():
         print("FORM DATA:", dict(request.form))
         request_data = dict(request.form)
 
-    type_of_meal = request_data.get("type_of_meal")
-    final_ingreds = request_data.get("final_ingreds")
-    minimum_calories = request_data.get("minimum_calories")
-    maximum_calories = request_data.get("maximum_calories")
-    max_ready_time = request_data.get("max_ready_time")
+    type_of_meal = request_data.get("type_of_meal") or "food"
+    final_ingreds = request_data.get("final_ingreds") or "-"
+    minimum_calories = request_data.get("minimum_calories") or "1"
+    maximum_calories = request_data.get("maximum_calories") or "10000"
+    max_ready_time = request_data.get("max_ready_time") or "10000"
 
     recipe_results = get_recipes(type_of_meal=type_of_meal, final_ingreds=final_ingreds, minimum_calories=minimum_calories, maximum_calories=maximum_calories, max_ready_time=max_ready_time)
     if recipe_results:
