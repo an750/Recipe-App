@@ -1,6 +1,6 @@
 # web_app/routes/recipe_routes.py
 
-from flask import Blueprint, request, render_template, jsonify
+from flask import Blueprint, request, jsonify, render_template, redirect, flash
 from app.recipe_service import get_recipes
 
 recipe_routes = Blueprint("recipe_routes", __name__)
@@ -46,9 +46,9 @@ def index():
     recipe_results = get_recipes(type_of_meal=type_of_meal, final_ingreds=final_ingreds, minimum_calories=minimum_calories, maximum_calories=maximum_calories, max_ready_time=max_ready_time)
     
     if recipe_results:
-        # flash("Plates Found!", "success")
+        flash("Plates Found!", "success")
         return render_template("recipe.html", results=recipe_results)
     else:
-        # flash("No Plates Found. Please try again!", "danger")
+        flash("No Plates Found. Please try again!", "danger")
         # return jsonify({"message": "Please try again."}), 404
         return render_template("no_recipe.html")
