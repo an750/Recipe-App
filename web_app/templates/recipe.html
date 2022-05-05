@@ -3,16 +3,40 @@
 
 {% block content %}
 
-    <h1>Recipe</h1>
+<style>
+    .float-img {
+        float: right; margin-left: 20px; margin-bottom: 10px;
+        border: solid black 1px; padding: 2px
+    }
+</style>
 
-    <p>Recipe info here</p>
+    <h1>Recipe Results</h1>
+    <p>See below for your curated list of recipes:</p>
 
-    <ul>
-        {% for recipe in results %}
-            <li>Recipe title: {{ recipe["servings"] }} </li>
-        {% endfor %}
-    </ul>
+<ul>
+    {% for recipe in results %}
+    <b style="color:rgb(52, 52, 233)"> {{ recipe["title"] }} </b>
+    <img src= {{ recipe["image"] }} alt="Image" width="220" height="170" class="float-img" />
+    <br>
+    Likes: {{ recipe["aggregateLikes"] }}
+    <br>
+    Total Preparation Time: {{ recipe["readyInMinutes"] }} mintues
+    <br>
+    Calories: {{ (recipe["nutrition"]["nutrients"][0]["amount"]|int) }}
+    <br>
+    Servings: {{ recipe["servings"] }}
+    <br>
+    <a href= {{ recipe["spoonacularSourceUrl"] }} >Click for Full Recipe! </a>
+    <br>
+    <br>
+    <br>
+    <hr>
+    {% endfor %}
+</ul>
 
 {% endblock %}
 
 
+<!-- <li>{{ forecast["timestamp"] }} | {{ forecast["temp"] }} | {{ forecast["conditions"].upper() }}</li> -->
+<img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/geeksforgeeks-13.png"
