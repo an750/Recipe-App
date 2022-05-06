@@ -1,10 +1,10 @@
 # Plate Provisions (Recipe Recommendations App)
 
-Sends you a customized email every morning, with information of interest, such as the upcoming weather forecast for your zip code.
+## Intructions for Application Use on External Heroku Server
 
-![](https://user-images.githubusercontent.com/1328807/77860069-173ef580-71db-11ea-83c6-5897bb9f4f51.png)
+Copy the following link into your browser: https://plate-provisions-22.herokuapp.com/
 
-## Installation
+## Instructions for Local Installation and Deployment 
 
 Create a copy of this [template repo](https://github.com/an750/Recipe-App), then clone or download your new repo onto your local computer (for example to the Desktop), and navigate there from the command-line:
 
@@ -24,19 +24,16 @@ Then, within an active virtual environment, install package dependencies:
 ```sh
 pip install -r requirements.txt
 ```
+### Spoonacular API Access
 
-## Usage
+Create a local .env file in your editor for security purposes.
 
-### Background Jobs
+Go to https://spoonacular.com/food-api and sign up for an account, verifying your account through email. 
 
-Printing today's weather forecast (to test the Weather.gov API):
+Once verified, go to 'My Console' < 'Profile < 'Show/Hide Api Key'
 
-```sh
-python -m app.weather_service
-
-# in production mode:
-APP_ENV="production" COUNTRY_CODE="US" ZIP_CODE="20057" python -m app.weather_service
-```
+Copy over your API key into your .env file like the following: 
+SPOONACULAR_API="____"
 
 
 ### Web Application
@@ -52,8 +49,5 @@ FLASK_APP=web_app flask run
 export FLASK_APP=web_app
 flask run
 ```
-
-
-
 
 ## [License](/LICENSE.md)
