@@ -1,4 +1,4 @@
-# Daily Briefings App (Python)
+# Plate Provisions (Recipe Recommendations App)
 
 Sends you a customized email every morning, with information of interest, such as the upcoming weather forecast for your zip code.
 
@@ -6,17 +6,17 @@ Sends you a customized email every morning, with information of interest, such a
 
 ## Installation
 
-Create a copy of this [template repo](https://github.com/prof-rossetti/daily-briefings-py), then clone or download your new repo onto your local computer (for example to the Desktop), and navigate there from the command-line:
+Create a copy of this [template repo](https://github.com/an750/Recipe-App), then clone or download your new repo onto your local computer (for example to the Desktop), and navigate there from the command-line:
 
 ```sh
-cd ~/Desktop/daily-briefings-py/
+cd ~/Desktop/Recipe-App/
 ```
 
-Use Anaconda to create and activate a new virtual environment, perhaps called "briefings-env":
+Use Anaconda to create and activate a new virtual environment, perhaps called "recipe-env":
 
 ```sh
-conda create -n briefings-env python=3.8
-conda activate briefings-env
+conda create -n recipe-env python=3.8
+conda activate recipe-env
 ```
 
 Then, within an active virtual environment, install package dependencies:
@@ -54,8 +54,6 @@ flask run
 ```
 
 
-## [Deploying](/DEPLOYING.md)
 
-Follow the deployment instructions to deploy the app to a remote server and schedule the server to send you the weather forecast email every day.
 
 ## [License](/LICENSE.md)
