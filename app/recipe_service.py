@@ -10,17 +10,32 @@ load_dotenv()
 SPOONACULAR_API_KEY = os.getenv("SPOONACULAR_API_KEY")
 
 def get_recipes(type_of_meal, final_ingreds, minimum_calories, maximum_calories, max_ready_time):
-    # SPOONACULAR_API_KEY = "be052ff238974959a8fb9b773d179250" # todo: use env vars
-    # # API_KEY = "7c8d9e352ee44612ac9285bcd1d591b1"
-    # # API_KEY = "c174b3169b224fd18bef932852107915"
+    """
+    Fetches recipes from Spoonacular API given desired type of meal, ingredients, number of calories, and max prep time.
+
+    Params:
+    type_of_meal (str) the type of meal recipe, like “pasta”
+    final_ingreds (str) desired ingredients in the recipe, like “chicken” or “chicken+cheese”
+    minimum_calories (int) desired minimum calories in the recipe, like “200”
+    maximum_calories (int) desired maximum calories in the recipe, like “1000"
+    max_ready_time (str) desired maximum preparation time in minutes, like “60”
+
+    Example:
+    get recipe(type_of_meal=“pasta”, final_ingreds=“chicken+cheese”, minimum_calories=“200", maximum_calories=“1000”, max_ready_time=“60")
+
+    Returns a list of dictionaries corresponding to various recipes given parameters
+
+    Spoonacular Documentation: https://spoonacular.com/food-api/docs#Search-Recipes-Complex
+
+    """
     url = f"https://api.spoonacular.com/recipes/complexSearch?query={type_of_meal}&includeIngredients={final_ingreds}&minCalories={minimum_calories}&maxCalories={maximum_calories}&maxReadyTime={max_ready_time}&addRecipeInformation=True&sort=popularity&number=10&apiKey={SPOONACULAR_API_KEY}" # url with user input variables
     response = requests.get(url)
     recipe_search_data = json.loads(response.text)
     recipe_results = [recipe for recipe in recipe_search_data["results"]]
-    pprint(recipe_results[0])
+    # pprint(recipe_results[0])
     return recipe_results
 
-# need to change this hard coded variables to dynamic user inputs
+# for local testing of the app function
 if __name__ == "__main__":
     recipe_search_data = get_recipes(type_of_meal="pasta",final_ingreds="pasta+salmon", minimum_calories="200", maximum_calories="1000", max_ready_time="60")
     for recipe in recipe_search_data:
