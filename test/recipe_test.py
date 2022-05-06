@@ -13,12 +13,3 @@ def test_get_recipes():
     assert results[0]["readyInMinutes"] == 45
     assert results[0]["nutrition"]["nutrients"][0]["amount"] == 473.939
     assert results[0]["aggregateLikes"] == 33
-
-
-
-
-  
-
-
-   # invalid_results = get_recipes(type_of_meal="pasta",final_ingreds="pasta+OOPS", minimum_calories="hello", maximum_calories="hi", max_ready_time="hey")
-   # assert invalid_results == None

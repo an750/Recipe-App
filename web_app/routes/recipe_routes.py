@@ -10,15 +10,10 @@ def recipe_form():
     print("RECIPE FORM...")
     return render_template("recipe_form.html")
 
-
+#route gets user inputs from recipe/form as dynamic parameters and calls the get_recipes() function to access and return recipes from the API
 @recipe_routes.route("/recipe", methods=["GET", "POST"])
 def index():
     print("Recipe...")
-    # recipe_results = get_recipes(type_of_meal="pasta", final_ingreds="pasta+salmon", minimum_calories="200", maximum_calories="1000", max_ready_time="60")
-    # if recipe_results:
-    #     return render_template("recipe.html", results=recipe_results)
-    # else:
-    #     return jsonify({"message": "Please try again."}), 404
 
     if request.method == "GET":
         print("URL PARAMS:", dict(request.args))
@@ -33,8 +28,7 @@ def index():
     maximum_calories = request_data.get("maximum_calories") or 10000
     max_ready_time = request_data.get("max_ready_time") or 10000
 
-    # loading error message for invalid inputs for integer parameters
-
+    # load error message page for invalid non-integer inputs for integer parameters
     if int(isinstance(minimum_calories,int)) == False:
         return render_template("no_recipe.html")
     elif int(isinstance(maximum_calories,int)) == False:
@@ -42,13 +36,13 @@ def index():
     elif int(isinstance(max_ready_time,int)) == False: 
         return render_template("no_recipe.html")  
    
-        
+    # call get_recipes function with form inputs as parameteres
     recipe_results = get_recipes(type_of_meal=type_of_meal, final_ingreds=final_ingreds, minimum_calories=minimum_calories, maximum_calories=maximum_calories, max_ready_time=max_ready_time)
     
+    # render the recipe results page if successful and alert the user
     if recipe_results:
         flash("Plates Found!", "success")
         return render_template("recipe.html", results=recipe_results)
     else:
         flash("No Plates Found. Please try again!", "danger")
-        # return jsonify({"message": "Please try again."}), 404
         return render_template("no_recipe.html")
